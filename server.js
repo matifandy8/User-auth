@@ -7,11 +7,12 @@ const app = express();
 connectDB();
 app.use(cors());
 
+const PORT = process.env.PORT || 8000;
+
 app.use(express.json());
 app.use(require('./routes'));
 require('./config/passport')(passport);
 app.use(passport.initialize());
-const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
 	console.log('Server is started');
